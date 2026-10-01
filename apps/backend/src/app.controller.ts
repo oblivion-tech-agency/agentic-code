@@ -1,3 +1,4 @@
+// ANNOTATION-OK-4419
 import { Controller, Get } from '@nestjs/common';
 import { AppService } from './app.service';
 
@@ -17,5 +18,10 @@ export class AppController {
       timestamp: new Date().toISOString(),
       service: 'backend',
     };
+  }
+
+  @Get('ping')
+  getPing() {
+    return { pong: true };
   }
 }

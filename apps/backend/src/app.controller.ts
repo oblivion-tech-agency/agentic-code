@@ -18,4 +18,9 @@ export class AppController {
       service: 'backend',
     };
   }
+
+  @Get('version')
+  getVersion() {
+    return this.appService.getVersion();
+  }
 }

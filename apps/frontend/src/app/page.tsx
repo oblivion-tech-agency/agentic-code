@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { IconEdit, IconTrash, IconUserPlus } from '@tabler/icons-react';
+import { IconEdit, IconRefresh, IconTrash, IconUserPlus } from '@tabler/icons-react';
 import { clearToken, getConfig, getMe, readToken } from '../lib/auth';
 import { getUsers, createUser, updateUser, deleteUser } from '../lib/users';
 import type { AuthUser, NavbarConfig } from '../types/auth';
@@ -177,13 +177,22 @@ export default function Home() {
                 Gestiona los usuarios registrados en el sistema
               </p>
             </div>
-            <button
-              onClick={openCreateModal}
-              className="inline-flex items-center gap-2 rounded-xl bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground transition hover:opacity-90"
-            >
-              <IconUserPlus size={18} />
-              Crear usuario
-            </button>
+            <div className="flex items-center gap-2">
+              <button
+                onClick={fetchUsers}
+                className="inline-flex items-center gap-2 rounded-xl border border-surface-border px-4 py-2.5 text-sm font-medium text-foreground transition hover:opacity-80"
+              >
+                <IconRefresh size={18} />
+                Refrescar
+              </button>
+              <button
+                onClick={openCreateModal}
+                className="inline-flex items-center gap-2 rounded-xl bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground transition hover:opacity-90"
+              >
+                <IconUserPlus size={18} />
+                Crear usuario
+              </button>
+            </div>
           </div>
 
           {/* Error */}

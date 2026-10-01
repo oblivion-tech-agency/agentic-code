@@ -122,6 +122,16 @@ export default function Home() {
     }
   }
 
+  function handleReset() {
+    if (!editingUser) return;
+    setForm({
+      firstName: editingUser.firstName,
+      lastName: editingUser.lastName,
+      email: editingUser.email,
+      password: '',
+    });
+  }
+
   async function handleDelete(user: User) {
     if (!window.confirm(`¿Eliminar a ${user.firstName} ${user.lastName}?`)) return;
     setUsersError('');
@@ -349,6 +359,14 @@ export default function Home() {
                   >
                     Cancelar
                   </button>
+                  {modalMode === 'edit' && (
+                    <button
+                      onClick={handleReset}
+                      className="flex-1 rounded-lg border border-surface-border px-4 py-2.5 text-sm font-medium text-muted transition hover:opacity-80"
+                    >
+                      Restablecer
+                    </button>
+                  )}
                   <button
                     onClick={handleSave}
                     disabled={saving}

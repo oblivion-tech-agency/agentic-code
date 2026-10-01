@@ -8,9 +8,6 @@ import { getUsers, createUser, updateUser, deleteUser } from '../lib/users';
 import type { AuthUser, NavbarConfig } from '../types/auth';
 import type { User, CreateUserInput, UpdateUserInput } from '../types/user';
 
-const primaryButtonClassName =
-  'inline-flex items-center justify-center rounded-xl bg-primary px-4 py-2.5 font-medium text-primary-foreground transition hover:opacity-90';
-
 type SessionState = {
   user: AuthUser;
   config: NavbarConfig;
@@ -160,7 +157,12 @@ export default function Home() {
               <p className="text-sm text-muted">{session.user.email}</p>
             </div>
 
-            <button type="button" onClick={handleLogout} className={primaryButtonClassName}>
+            <button
+              type="button"
+              onClick={handleLogout}
+              className="inline-flex items-center justify-center rounded-xl px-4 py-2.5 font-medium text-white transition hover:opacity-90"
+              style={{ backgroundColor: '#7f77dd' }}
+            >
               Log out
             </button>
           </div>

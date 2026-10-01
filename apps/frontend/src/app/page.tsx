@@ -170,8 +170,13 @@ export default function Home() {
           {/* Header */}
           <div className="mb-6 flex items-center justify-between">
             <div>
-              <h1 className="text-[22px] font-medium tracking-tight text-foreground">
+              <h1 className="flex items-center gap-2.5 text-[22px] font-medium tracking-tight text-foreground">
                 Administración de Usuarios
+                {!usersLoading && (
+                  <span className="inline-flex h-6 min-w-6 items-center justify-center rounded-full border border-surface-border bg-surface px-1.5 text-xs font-medium text-muted">
+                    {users.length}
+                  </span>
+                )}
               </h1>
               <p className="mt-1 text-sm text-muted">
                 Gestiona los usuarios registrados en el sistema

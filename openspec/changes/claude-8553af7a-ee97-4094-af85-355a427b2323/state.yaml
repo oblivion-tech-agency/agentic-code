@@ -1,0 +1,12 @@
+change: claude-8553af7a-ee97-4094-af85-355a427b2323
+project: agentic-code
+mode: hybrid
+phases:
+  explore: completed
+  proposal: completed
+  spec: completed
+  design: completed
+  tasks: completed
+  apply: pending
+  verify: pending
+  archive: pending

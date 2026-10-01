@@ -1,4 +1,4 @@
-import type { ApiErrorResponse } from '../types/auth';
+import type { ApiErrorResponse, HealthStatus } from '../types/auth';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
 
@@ -32,4 +32,8 @@ export async function apiFetch<T>(
   }
 
   return data as T;
+}
+
+export async function fetchHealth(): Promise<HealthStatus> {
+  return apiFetch<HealthStatus>('/health');
 }

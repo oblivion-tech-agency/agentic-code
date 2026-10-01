@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { IconEdit, IconTrash, IconUserPlus } from '@tabler/icons-react';
 import { clearToken, getConfig, getMe, readToken } from '../lib/auth';
+import HealthBadge from '../components/health-badge';
 import { getUsers, createUser, updateUser, deleteUser } from '../lib/users';
 import type { AuthUser, NavbarConfig } from '../types/auth';
 import type { User, CreateUserInput, UpdateUserInput } from '../types/user';
@@ -159,6 +160,8 @@ export default function Home() {
               </p>
               <p className="text-sm text-muted">{session.user.email}</p>
             </div>
+
+            <HealthBadge />
 
             <button type="button" onClick={handleLogout} className={primaryButtonClassName}>
               Log out

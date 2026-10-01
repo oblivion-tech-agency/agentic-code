@@ -33,3 +33,10 @@ export type NavbarConfig = {
   environment: string;
   supportEmail: string;
 };
+
+export interface HealthStatus {
+  status: string;
+  timestamp: string;
+  service: string;
+  uptime: number;
+}

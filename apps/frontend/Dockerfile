@@ -10,7 +10,7 @@
 # Dockerfile del backend, es una imagen más grande pero determinística.
 
 # ── Stage 1: dependencias ─────────────────────────────────────────────────────
-FROM node:20-alpine AS deps
+FROM node:24-alpine AS deps
 WORKDIR /app
 RUN corepack enable && corepack prepare pnpm@9.0.0 --activate
 COPY package.json pnpm-workspace.yaml pnpm-lock.yaml* ./
@@ -18,7 +18,7 @@ COPY apps/frontend/package.json ./apps/frontend/
 RUN pnpm install --filter frontend --frozen-lockfile --ignore-scripts
 
 # ── Stage 2: build ────────────────────────────────────────────────────────────
-FROM node:20-alpine AS builder
+FROM node:24-alpine AS builder
 WORKDIR /app
 RUN corepack enable && corepack prepare pnpm@9.0.0 --activate
 COPY --from=deps /app/node_modules ./node_modules
@@ -30,7 +30,7 @@ ENV NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL}
 RUN pnpm --filter frontend build
 
 # ── Stage 3: runner (imagen de producción, next start normal) ─────────────────
-FROM node:20-alpine AS runner
+FROM node:24-alpine AS runner
 WORKDIR /app
 RUN corepack enable && corepack prepare pnpm@9.0.0 --activate
 ENV NODE_ENV=production
